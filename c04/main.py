@@ -1,17 +1,21 @@
-import os, sys
+import os
 
-# sys.path.insert(1, "/".join(os.path.realpath(__file__).split("/")[0:-2]))
+from c03 import main as main03
 
+# TODO don't log when it's in test
 
-# sys.path.append(os.path.abspath(os.path.join('..', 'd03')))
+def FindEncrypted():
+    with open(os.path.join(os.getcwd(), 'c04/input.txt')) as file:
+        bestCrack = main03.ScoredGuess()
+        for line in file:
+            chiper = bytes.fromhex(line)
+            crack = main03.crackXorCipher(chiper)
+            bestCrack = max(bestCrack, crack)
+        print(bestCrack.plainText)
+        print(bestCrack.chiperText.hex())
+        return bestCrack.plainText
+    return Nones
 
-# # # Now do your import
-# # from config.config import *
-
-# from d03 import main
 
 if __name__ == "__main__":
-    print(os.getcwd())
-    with open(os.path.join(os.getcwd(), '04/input.txt')) as file:
-        for line in file:
-            print(line)
+    FindEncrypted()

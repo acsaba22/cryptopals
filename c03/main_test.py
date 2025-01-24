@@ -1,4 +1,4 @@
-import main
+from c03 import main
 import unittest
 
 class Test_TestHexXor(unittest.TestCase):
