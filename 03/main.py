@@ -52,7 +52,7 @@ def crackXorCipher(chiper: bytes) -> ScoredGuess:
         bestGuess = max(bestGuess, ScoredGuess(score, i))
 
     bestGuess.chiperText = chiper
-    bestGuess.chiperText = xorRepeat(chiper, bestGuess.key)
+    bestGuess.plainText = xorRepeat(chiper, bestGuess.key)
     return bestGuess
 
 
